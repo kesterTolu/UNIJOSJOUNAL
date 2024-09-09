@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="All Articles and Journals">
+        <title>All Articles & Journals</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/templatemo-ebook-landing.css" rel="stylesheet">
+
+        <style>
+            /* Additional styling for search bar */
+            .search-bar {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            @media (max-width: 768px) {
+                .search-bar {
+                    width: 100%;
+                }
+            }
+            /* Ensure table is responsive */
+            .table-responsive {
+                overflow-x: auto;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- Header Section with Go Home Button -->
+        <header class="py-3 bg-light">
+            <div class="container d-flex justify-content-between align-items-center">
+                <h1 class="h3 mb-0">All Articles & Journals</h1>
+                <a href="index.html" class="btn btn-primary">Go Home</a>
+            </div>
+        </header>
+
+        <!-- Search Bar -->
+        <div class="container mt-4">
+            <input type="text" id="searchInput" class="form-control search-bar" onkeyup="searchFunction()" placeholder="Search by title, author, or ISSN number...">
+        </div>
+
+        <!-- Table of Journals -->
+        <div class="container table-responsive">
+            <table class="table table-striped" id="journalTable">
+                <thead>
+                    <tr>
+                        <th>Article Title</th>
+                        <th>Author</th>
+                        <th>ISSN Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="pdf/Social Media Manager Offer Letter Draft.pdf" target="_blank">The Impact of Climate Change on Agriculture in Northern Nigeria</a></td>
+                        <td>Dr. John Doe</td>
+                        <td>1234-5678</td>
+                    </tr>
+                    <tr>
+                        <td><a href="pdf/emerging-trends-in-ai.pdf" target="_blank">Emerging Trends in Artificial Intelligence in Medicine</a></td>
+                        <td>Prof. Sophia Abubakar</td>
+                        <td>2345-6789</td>
+                    </tr>
+                    <tr>
+                        <td><a href="pdf/gender-in-political-participation.pdf" target="_blank">Gender in Political Participation in Africa</a></td>
+                        <td>Dr. Amina Salisu</td>
+                        <td>3456-7890</td>
+                    </tr>
+                    <tr>
+                        <td><a href="pdf/renewable-energy-solar.pdf" target="_blank">Renewable Energy: Solar Power in Nigeria</a></td>
+                        <td>Prof. James Adewale</td>
+                        <td>4567-8901</td>
+                    </tr>
+                    <tr>
+                        <td><a href="pdf/urbanizations-effect.pdf" target="_blank">Urbanization's Effect on Traditional Communities in Jos</a></td>
+                        <td>Dr. Grace Nwankwo</td>
+                        <td>5678-9012</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- JS Script to Implement Search Functionality -->
+        <script>
+            function searchFunction() {
+                // Get the value from the search bar
+                let input = document.getElementById('searchInput').value.toUpperCase();
+
+                // Get the table and rows
+                let table = document.getElementById('journalTable');
+                let tr = table.getElementsByTagName('tr');
+
+                // Loop through all rows, and hide those that don't match the search query
+                for (let i = 1; i < tr.length; i++) {
+                    let tdTitle = tr[i].getElementsByTagName('td')[0]; // Title
+                    let tdAuthor = tr[i].getElementsByTagName('td')[1]; // Author
+                    let tdISSN = tr[i].getElementsByTagName('td')[2]; // ISSN
+
+                    if (tdTitle || tdAuthor || tdISSN) {
+                        let titleText = tdTitle.textContent || tdTitle.innerText;
+                        let authorText = tdAuthor.textContent || tdAuthor.innerText;
+                        let issnText = tdISSN.textContent || tdISSN.innerText;
+
+                        // Check if any input matches the title, author, or ISSN
+                        if (titleText.toUpperCase().indexOf(input) > -1 || 
+                            authorText.toUpperCase().indexOf(input) > -1 || 
+                            issnText.toUpperCase().indexOf(input) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }       
+                }
+            }
+        </script>
+
+        <!-- JS Scripts -->
+        <script src="js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
